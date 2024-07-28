@@ -12,8 +12,8 @@ export class TaskService {
 
   async createTask(task: Partial<Task>): Promise<Task> {
     try {
-      console.log('Task before saving:', task);
       const newTask = this.taskRepository.create(task);
+      
       return await this.taskRepository.save(newTask);
     } catch (error) {
       console.error('Error creating task:', error);

@@ -17,11 +17,9 @@ export class UserController {
 
   @GrpcMethod('UsersService', 'GetUser')
   async getUser(data: User) {
-    console.log(data,"data");
     
     const { email } = data;
     const user = await this.userService.findByEmail(email);
-    console.log(user,"user");
     
     if (!user) {
       return { name: '', email: '', password: '', createdDate: '', updatedDate: '' };
